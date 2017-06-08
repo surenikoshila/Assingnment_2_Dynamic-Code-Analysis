@@ -1,0 +1,5227 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ZAP Scanning Report</title>
+</head>
+<body text="#000000">
+<p>
+<strong>ZAP Scanning Report</strong>
+</p>
+<p>
+
+</p>
+<p>
+<strong>Summary of Alerts</strong>
+</p>
+<table width="45%" border="0">
+<tr bgcolor="#666666">
+<td width="45%" height="24"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">Risk 
+      Level</font></strong></td><td width="55%" align="center"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">Number 
+      of Alerts</font></strong></td>
+</tr>
+<tr bgcolor="#e8e8e8">
+<td><font size="2" face="Arial, Helvetica, sans-serif"><a href="#high">High</a></font></td><td align="center"><font size="2" face="Arial, Helvetica, sans-serif">3</font></td>
+</tr>
+<tr bgcolor="#e8e8e8">
+<td><font size="2" face="Arial, Helvetica, sans-serif"><a href="#medium">Medium</a></font></td><td align="center"><font size="2" face="Arial, Helvetica, sans-serif">3</font></td>
+</tr>
+<tr bgcolor="#e8e8e8">
+<td><font size="2" face="Arial, Helvetica, sans-serif"><a href="#low">Low</a></font></td><td align="center"><font size="2" face="Arial, Helvetica, sans-serif">7</font></td>
+</tr>
+<tr bgcolor="#e8e8e8">
+<td><font size="2" face="Arial, Helvetica, sans-serif"><a href="#info">Informational</a></font></td><td align="center"><font size="2" face="Arial, Helvetica, sans-serif">0</font></td>
+</tr>
+</table>
+<p></p>
+<p></p>
+<p>
+<strong>Alert Detail</strong>
+</p>
+<p></p>
+<table width="100%" border="0">
+  
+  
+  
+<tr bgcolor="red" height="24">
+<td width="20%" valign="top"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif"><a name="high"></a>High (Medium)</font></strong></td><td width="80%"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">Path Traversal</font></strong></td>
+</tr>
+  
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Description</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>The Path Traversal attack technique allows an attacker access to files, directories, and commands that potentially reside outside the web document root directory. An attacker may manipulate a URL in such a way that the web site will execute or reveal the contents of arbitrary files anywhere on the web server. Any device that exposes an HTTP-based interface is potentially vulnerable to Path Traversal.</p><p></p><p>Most web sites restrict user access to a specific portion of the file-system, typically called the "web document root" or "CGI root" directory. These directories contain the files intended for user access and the executable necessary to drive web application functionality. To access files or execute commands anywhere on the file-system, Path Traversal attacks will utilize the ability of special-characters sequences.</p><p></p><p>The most basic Path Traversal attack uses the "../" special-character sequence to alter the resource location requested in the URL. Although most popular web servers will prevent this technique from escaping the web document root, alternate encodings of the "../" sequence may help bypass the security filters. These method variations include valid and invalid Unicode-encoding ("..%u2216" or "..%c0%af") of the forward slash character, backslash characters ("..\") on Windows-based servers, URL encoded characters "%2e%2e%2f"), and double URL encoding ("..%255c") of the backslash character.</p><p></p><p>Even if the web server properly restricts Path Traversal attempts in the URL path, a web application itself may still be vulnerable due to improper handling of user-supplied input. This is a common problem of web applications that use template mechanisms or load static text from files. In variations of the attack, the original URL parameter value is substituted with the file name of one of the web application's dynamic scripts. Consequently, the results can reveal source code because the file is interpreted as text instead of an executable script. These techniques often employ additional special characters such as the dot (".") to reveal the listing of the current working directory, or "%00" NULL characters in order to bypass rudimentary file extension checks.</p></font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/appdev/web.xml.txt?query=WEB-INF%2Fweb.xml</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>query</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Attack</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WEB-INF/web.xml</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;/web-app&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/jndi-datasource-examples-howto.html?query=WEB-INF%2Fweb.xml</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>query</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Attack</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WEB-INF/web.xml</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;/web-app&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Instances</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>2</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Solution</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Assume all input is malicious. Use an "accept known good" input validation strategy, i.e., use a whitelist of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. Do not rely exclusively on looking for malicious or malformed inputs (i.e., do not rely on a blacklist). However, blacklists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.</p><p></p><p>When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, "boat" may be syntactically valid because it only contains alphanumeric characters, but it is not valid if you are expecting colors such as "red" or "blue."</p><p></p><p>For filenames, use stringent whitelists that limit the character set to be used. If feasible, only allow a single "." character in the filename to avoid weaknesses, and exclude directory separators such as "/". Use a whitelist of allowable file extensions.</p><p></p><p>Warning: if you attempt to cleanse your data, then do so that the end result is not in the form that can be dangerous. A sanitizing mechanism can remove characters such as '.' and ';' which may be required for some exploits. An attacker can try to fool the sanitizing mechanism into "cleaning" data into a dangerous form. Suppose the attacker injects a '.' inside a filename (e.g. "sensi.tiveFile") and the sanitizing mechanism removes the character resulting in the valid filename, "sensitiveFile". If the input data are now assumed to be safe, then the file may be compromised. </p><p></p><p>Inputs should be decoded and canonicalized to the application's current internal representation before being validated. Make sure that your application does not decode the same input twice. Such errors could be used to bypass whitelist schemes by introducing dangerous inputs after they have been checked.</p><p></p><p>Use a built-in path canonicalization function (such as realpath() in C) that produces the canonical version of the pathname, which effectively removes ".." sequences and symbolic links.</p><p></p><p>Run your code using the lowest privileges that are required to accomplish the necessary tasks. If possible, create isolated accounts with limited privileges that are only used for a single task. That way, a successful attack will not immediately give the attacker access to the rest of the software or its environment. For example, database applications rarely need to run as the database administrator, especially in day-to-day operations.</p><p></p><p>When the set of acceptable objects, such as filenames or URLs, is limited or known, create a mapping from a set of fixed input values (such as numeric IDs) to the actual filenames or URLs, and reject all other inputs.</p><p></p><p>Run your code in a "jail" or similar sandbox environment that enforces strict boundaries between the process and the operating system. This may effectively restrict which files can be accessed in a particular directory or which commands can be executed by your software.</p><p></p><p>OS-level examples include the Unix chroot jail, AppArmor, and SELinux. In general, managed code may provide some protection. For example, java.io.FilePermission in the Java SecurityManager allows you to specify restrictions on file operations.</p><p></p><p>This may not be a feasible solution, and it only limits the impact to the operating system; the rest of your application may still be subject to compromise.</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Reference</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>http://projects.webappsec.org/Path-Traversal</p><p>http://cwe.mitre.org/data/definitions/22.html</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>CWE Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>22</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WASC Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>33</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Source ID</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>1</p>
+</font></td>
+</tr>
+
+</table>
+<p></p>
+<table width="100%" border="0">
+  
+  
+  
+<tr bgcolor="red" height="24">
+<td width="20%" valign="top"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif"><a name="high"></a>High (Medium)</font></strong></td><td width="80%"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">SQL Injection</font></strong></td>
+</tr>
+  
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Description</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>SQL injection may be possible.</p></font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/servlets/servlet/SessionExample;jsessionid=B130F537C81769F31B7B0EEDCA0D7973</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>POST</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>dataname</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Attack</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>ZAP AND 1=1 -- </p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Instances</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Solution</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Do not trust client side input, even if there is client side validation in place.  </p><p>In general, type check all data on the server side.</p><p>If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'</p><p>If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.</p><p>If database Stored Procedures can be used, use them.</p><p>Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!</p><p>Do not create dynamic SQL queries using simple string concatenation.</p><p>Escape all data received from the client.</p><p>Apply a 'whitelist' of allowed characters, or a 'blacklist' of disallowed characters in user input.</p><p>Apply the principle of least privilege by using the least privileged database user possible.</p><p>In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.</p><p>Grant the minimum database access that is necessary for the application.</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Other information</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p><p>The page results were successfully manipulated using the boolean conditions [ZAP AND 1=1 -- ] and [ZAP AND 1=2 -- ]</p><p>The parameter value being modified was NOT stripped from the HTML output for the purposes of the comparison</p><p>Data was returned for the original parameter.</p><p>The vulnerability was detected by successfully restricting the data originally returned, by manipulating the parameter</p></p>
+</font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Reference</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>https://www.owasp.org/index.php/Top_10_2010-A1</p><p>https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>CWE Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>89</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WASC Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>19</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Source ID</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>1</p>
+</font></td>
+</tr>
+
+</table>
+<p></p>
+<table width="100%" border="0">
+  
+  
+  
+<tr bgcolor="red" height="24">
+<td width="20%" valign="top"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif"><a name="high"></a>High (Medium)</font></strong></td><td width="80%"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">Cross Site Scripting (Reflected)</font></strong></td>
+</tr>
+  
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Description</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user's browser instance. A browser instance can be a standard web browser client, or a browser object embedded in a software product such as the browser within WinAmp, an RSS reader, or an email client. The code itself is usually written in HTML/JavaScript, but may also extend to VBScript, ActiveX, Java, Flash, or any other browser-supported technology.</p><p>When an attacker gets a user's browser to execute his/her code, the code will run within the security context (or zone) of the hosting web site. With this level of privilege, the code has the ability to read, modify and transmit any sensitive data accessible by the browser. A Cross-site Scripted user could have his/her account hijacked (cookie theft), their browser redirected to another location, or possibly shown fraudulent content delivered by the web site they are visiting. Cross-site Scripting attacks essentially compromise the trust relationship between a user and the web site. Applications utilizing browser object instances which load content from the file system may execute code under the local machine zone allowing for system compromise.</p><p></p><p>There are three types of Cross-site Scripting attacks: non-persistent, persistent and DOM-based.</p><p>Non-persistent attacks and DOM-based attacks require a user to either visit a specially crafted link laced with malicious code, or visit a malicious web page containing a web form, which when posted to the vulnerable site, will mount the attack. Using a malicious form will oftentimes take place when the vulnerable resource only accepts HTTP POST requests. In such a case, the form can be submitted automatically, without the victim's knowledge (e.g. by using JavaScript). Upon clicking on the malicious link or submitting the malicious form, the XSS payload will get echoed back and will get interpreted by the user's browser and execute. Another technique to send almost arbitrary requests (GET and POST) is by using an embedded client, such as Adobe Flash.</p><p>Persistent attacks occur when the malicious code is submitted to a web site where it's stored for a period of time. Examples of an attacker's favorite targets often include message board posts, web mail messages, and web chat software. The unsuspecting user is not required to interact with any additional site/link (e.g. an attacker site or a malicious link sent via email), just simply view the web page containing the code.</p></font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/servlets/servlet/CookieExample</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>POST</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>cookievalue</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Attack</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;script&gt;alert(1);&lt;/script&gt;</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;script&gt;alert(1);&lt;/script&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Instances</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Solution</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>Examples of libraries and frameworks that make it easier to generate properly encoded output include Microsoft's Anti-XSS library, the OWASP ESAPI Encoding module, and Apache Wicket.</p><p></p><p>Phases: Implementation; Architecture and Design</p><p>Understand the context in which your data will be used and the encoding that will be expected. This is especially important when transmitting data between different components, or when generating outputs that can contain multiple encodings at the same time, such as web pages or multi-part mail messages. Study all expected communication protocols and data representations to determine the required encoding strategies.</p><p>For any data that will be output to another web page, especially any data that was received from external inputs, use the appropriate encoding on all non-alphanumeric characters.</p><p>Consult the XSS Prevention Cheat Sheet for more details on the types of encoding and escaping that are needed.</p><p></p><p>Phase: Architecture and Design</p><p>For any security checks that are performed on the client side, ensure that these checks are duplicated on the server side, in order to avoid CWE-602. Attackers can bypass the client-side checks by modifying values after the checks have been performed, or by changing the client to remove the client-side checks entirely. Then, these modified values would be submitted to the server.</p><p></p><p>If available, use structured mechanisms that automatically enforce the separation between data and code. These mechanisms may be able to provide the relevant quoting, encoding, and validation automatically, instead of relying on the developer to provide this capability at every point where output is generated.</p><p></p><p>Phase: Implementation</p><p>For every web page that is generated, use and specify a character encoding such as ISO-8859-1 or UTF-8. When an encoding is not specified, the web browser may choose a different encoding by guessing which encoding is actually being used by the web page. This can cause the web browser to treat certain sequences as special, opening up the client to subtle XSS attacks. See CWE-116 for more mitigations related to encoding/escaping.</p><p></p><p>To help mitigate XSS attacks against the user's session cookie, set the session cookie to be HttpOnly. In browsers that support the HttpOnly feature (such as more recent versions of Internet Explorer and Firefox), this attribute can prevent the user's session cookie from being accessible to malicious client-side scripts that use document.cookie. This is not a complete solution, since HttpOnly is not supported by all browsers. More importantly, XMLHTTPRequest and other powerful browser technologies provide read access to HTTP headers, including the Set-Cookie header in which the HttpOnly flag is set.</p><p></p><p>Assume all input is malicious. Use an "accept known good" input validation strategy, i.e., use a whitelist of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. Do not rely exclusively on looking for malicious or malformed inputs (i.e., do not rely on a blacklist). However, blacklists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.</p><p></p><p>When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, "boat" may be syntactically valid because it only contains alphanumeric characters, but it is not valid if you are expecting colors such as "red" or "blue."</p><p></p><p>Ensure that you perform input validation at well-defined interfaces within the application. This will help protect the application even if a component is reused or moved elsewhere.</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Reference</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>http://projects.webappsec.org/Cross-Site-Scripting</p><p>http://cwe.mitre.org/data/definitions/79.html</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>CWE Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>79</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WASC Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>8</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Source ID</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>1</p>
+</font></td>
+</tr>
+
+</table>
+<p></p>
+<table width="100%" border="0">
+  
+  
+  
+<tr bgcolor="orange" height="24">
+<td width="20%" valign="top"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif"><a name="medium"></a>Medium (Medium)</font></strong></td><td width="80%"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">X-Frame-Options Header Not Set</font></strong></td>
+</tr>
+  
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Description</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>X-Frame-Options header is not included in the HTTP response to protect against 'ClickJacking' attacks.</p></font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=A825853E68163A5702ED8288BEBD8AB2</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=41CB8523E37071894D601FD89440788E?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/config/realm.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/jsp2/simpletag/book.jsp</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/security/protected/index.jsp;jsessionid=8C9E95C4502AF7CC9E59F8D222C09A60</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/cal/cal1.jsp</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>POST</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=12E614E460F4A162DB03FEA04BBEEF4A?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/config/engine.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/architecture/startup.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/security-manager-howto.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=47133D770201DF8FF9A87958896C2E90</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/config/jar-scanner.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/jsp2/tagfiles/hello.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=7F91AA3C9DC7CFEA0ED04D0FA8BEF20C?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/servlets/servlet/RequestInfoExample</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=DB56A0C31DCD7485C198B4B5EA2E53E6?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=1382523204&amp;menu=900</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=1869022003&amp;menu=100</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=C9F0E5F6ACEB0AE116A34A898B828C04?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/tribes/membership.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Frame-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Instances</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>522</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Solution</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Most modern Web browsers support the X-Frame-Options HTTP header. Ensure it's set on all web pages returned by your site (if you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. ALLOW-FROM allows specific websites to frame the web page in supported web browsers).</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Reference</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>http://blogs.msdn.com/b/ieinternals/archive/2010/03/30/combating-clickjacking-with-x-frame-options.aspx</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>CWE Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>16</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WASC Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>15</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Source ID</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>3</p>
+</font></td>
+</tr>
+
+</table>
+<p></p>
+<table width="100%" border="0">
+  
+  
+  
+<tr bgcolor="orange" height="24">
+<td width="20%" valign="top"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif"><a name="medium"></a>Medium (Medium)</font></strong></td><td width="80%"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">Application Error Disclosure</font></strong></td>
+</tr>
+  
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Description</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.</p></font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/jndi-resources-howto.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>JDBC Driver</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/config/valve.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Error Report</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/jndi-datasource-examples-howto.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>JDBC Driver</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/config/listeners.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>JDBC Driver</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/manager-howto.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>java.lang.NumberFormatException: For input string:</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/error/err.jsp?name=bmw328i&amp;submit=Submit</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>HTTP/1.1 500 Internal Server Error</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Instances</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>6</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Solution</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Reference</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p></p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>CWE Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>200</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WASC Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>13</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Source ID</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>3</p>
+</font></td>
+</tr>
+
+</table>
+<p></p>
+<table width="100%" border="0">
+  
+  
+  
+<tr bgcolor="orange" height="24">
+<td width="20%" valign="top"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif"><a name="medium"></a>Medium (Medium)</font></strong></td><td width="80%"><strong><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">Format String Error</font></strong></td>
+</tr>
+  
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Description</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>A Format String error occurs when the submitted data of an input string is evaluated as a command by the application. </p></font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/servlets/servlet/CookieExample</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>POST</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>cookiename</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Attack</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>ZAP%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s
+</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/servlets/servlet/CookieExample</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>POST</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>cookievalue</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Attack</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>ZAP%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n%s
+</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Instances</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>2</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Solution</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Rewrite the background program using proper deletion of bad character strings.  This will require a recompile of the background executable.</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Other information</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p><p>Potential Format String Error.  The script closed the connection on a /%s</p></p>
+</font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Reference</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>https://www.owasp.org/index.php/Format_string_attack</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>CWE Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>134</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WASC Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>6</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Source ID</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>1</p>
+</font></td>
+</tr>
+
+</table>
+<p></p>
+<table width="100%" border="0">
+  
+  
+  
+<tr bgcolor="yellow" height="24">
+<a name="low"></a><td width="20%" valign="top"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Low (Medium)</font></strong></td><td width="80%"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">X-Content-Type-Options Header Missing</font></strong></td>
+</tr>
+  
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Description</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p></font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://detectportal.firefox.com/success.txt</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Instances</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Solution</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Other information</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p><p>This issue still applies to error type pages (401, 403, 500, etc) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At "High" threshold this scanner will not alert on client or server error responses.</p></p>
+</font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Reference</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://www.owasp.org/index.php/List_of_useful_HTTP_headers</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>CWE Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>16</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WASC Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>15</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Source ID</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>3</p>
+</font></td>
+</tr>
+
+</table>
+<p></p>
+<table width="100%" border="0">
+  
+  
+  
+<tr bgcolor="yellow" height="24">
+<a name="low"></a><td width="20%" valign="top"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Low (Medium)</font></strong></td><td width="80%"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">X-Content-Type-Options Header Missing</font></strong></td>
+</tr>
+  
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Description</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p></font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=1584137874&amp;menu=1700</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/error/error.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/plugin/plugin.jsp</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/appdev/web.xml.txt</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=611366032&amp;menu=900&amp;stage=5</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/api/index.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/snp/snoop.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=611366032&amp;menu=900&amp;stage=6</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=1307234977&amp;menu=2000</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/jsp2/tagfiles/panel.tag.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/jsp2/el/implicit-objects.jsp?foo=bar</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=611366032&amp;menu=900&amp;stage=3</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/service/hint.mvc</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/ssi-howto.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=5C8F8FAC2FA37AAB0E10A1DB88BF2FAA?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=22A11975A1F1FD7D06AC6D82D1F09175</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=611366032&amp;menu=900&amp;stage=4</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/funcspecs/index.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/jsp2/tagfiles/helloWorld.tag.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/proxy-howto.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-Content-Type-Options</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Instances</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>559</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Solution</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Other information</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p><p>This issue still applies to error type pages (401, 403, 500, etc) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At "High" threshold this scanner will not alert on client or server error responses.</p></p>
+</font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Reference</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://www.owasp.org/index.php/List_of_useful_HTTP_headers</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>CWE Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>16</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WASC Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>15</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Source ID</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>3</p>
+</font></td>
+</tr>
+
+</table>
+<p></p>
+<table width="100%" border="0">
+  
+  
+  
+<tr bgcolor="yellow" height="24">
+<a name="low"></a><td width="20%" valign="top"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Low (Medium)</font></strong></td><td width="80%"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Password Autocomplete in Browser</font></strong></td>
+</tr>
+  
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Description</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>The AUTOCOMPLETE attribute is not disabled on an HTML FORM/INPUT element containing password type input.  Passwords may be stored in browsers and retrieved.</p></font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=810720179&amp;menu=500</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>pass</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input name='pass' type='PASSWORD'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=611366032&amp;menu=900</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>password</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input name="password" type="password" size="10" maxlength="8" /&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=04097A5718D3C44575D918A3673A4108</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>exampleInputPassword1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=4BA9C28509B5A44BF480564EA13CD3C2?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>exampleInputPassword1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=7F201D2219E2166036750F8E1FB27158</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>exampleInputPassword1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=611366032&amp;menu=900&amp;stage=1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>password</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input name="password" type="password" size="10" maxlength="8" /&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=5535EEBDFBB56AEE1E6185AA44AFBF55</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>exampleInputPassword1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=4BE87DCDC69C8091CCB72DEF295F66CF?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>exampleInputPassword1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=5A9AF1614CA45914AD01E2092DB1BA5E?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>exampleInputPassword1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=611366032&amp;menu=900&amp;stage=3</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>password</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input name="password" type="password" size="10" maxlength="8" /&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=DC82497015C1591CDFFEF12F9142EC44</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>exampleInputPassword1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=AF66222EBB1ED1952960153E5A259006?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>exampleInputPassword1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=1525997619&amp;menu=1300</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>clear_pass</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input value='sniffy' name='clear_pass' readonly type='PASSWORD'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=611366032&amp;menu=900&amp;stage=5</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>password</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input name="password" type="password" size="10" maxlength="8" /&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=611366032&amp;menu=900&amp;stage=4</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>password</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input name="password" type="password" size="10" maxlength="8" /&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=EBB167DF76BF29989D18EF03F527A900</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>exampleInputPassword1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=8484F32B2FCE007B8B2EA413C608A61A?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>exampleInputPassword1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=4E8F1D4C052E085EFCF5775C432AF99D</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>exampleInputPassword1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=103B47D76A0A95A4BF62543D53F3E6F3</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>exampleInputPassword1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=22A11975A1F1FD7D06AC6D82D1F09175?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>exampleInputPassword1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>&lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='password'&gt;</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Instances</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>175</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Solution</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Turn off the AUTOCOMPLETE attribute in forms or individual input elements containing password inputs by using AUTOCOMPLETE='OFF'.</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Reference</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>http://www.w3schools.com/tags/att_input_autocomplete.asp</p><p>https://msdn.microsoft.com/en-us/library/ms533486%28v=vs.85%29.aspx</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>CWE Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>525</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WASC Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>15</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Source ID</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>3</p>
+</font></td>
+</tr>
+
+</table>
+<p></p>
+<table width="100%" border="0">
+  
+  
+  
+<tr bgcolor="yellow" height="24">
+<a name="low"></a><td width="20%" valign="top"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Low (Medium)</font></strong></td><td width="80%"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Web Browser XSS Protection Not Enabled</font></strong></td>
+</tr>
+  
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Description</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Web Browser XSS Protection is not enabled, or is disabled by the configuration of the 'X-XSS-Protection' HTTP response header on the web server</p></font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/realm-howto.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/jsp2/el/basic-arithmetic.jsp</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/developers.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=ED173CEE0081DA7B8ADDB9E409BC37CF?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=103B47D76A0A95A4BF62543D53F3E6F3</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/error/err.jsp?name=bmw328i&amp;submit=Submit</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/jsp2/el/basic-arithmetic.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=22A11975A1F1FD7D06AC6D82D1F09175?error</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=3A3F3F7B6C147ECC5EE19B10EAE61EF2</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=2022121558&amp;menu=400</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/plugin/plugin.jsp.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=950261113&amp;menu=1800</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=474C2EA14C4EEBF6517F7D8538A509B5</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/jsp/cal/cal2.jsp?time=4pm</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/login.mvc;jsessionid=8C8C7D3BD4A267BA7E75FC247F231E67</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=1319172155&amp;menu=1900</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/appdev/processes.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/manager-howto.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/servlets/servlet/RequestParamExample</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>POST</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=810720179&amp;menu=500</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>X-XSS-Protection</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Instances</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>563</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Solution</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Ensure that the web browser's XSS filter is enabled, by setting the X-XSS-Protection HTTP response header to '1'.</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Other information</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p><p>The X-XSS-Protection HTTP response header allows the web server to enable or disable the web browser's XSS protection mechanism. The following values would attempt to enable it: </p><p>X-XSS-Protection: 1; mode=block</p><p>X-XSS-Protection: 1; report=http://www.example.com/xss</p><p>The following values would disable it:</p><p>X-XSS-Protection: 0</p><p>The X-XSS-Protection HTTP response header is currently supported on Internet Explorer, Chrome and Safari (WebKit).</p><p>Note that this alert is only raised if the response body could potentially contain an XSS payload (with a text-based content type, with a non-zero length).</p></p>
+</font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Reference</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet</p><p>https://blog.veracode.com/2014/03/guidelines-for-setting-security-headers/</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>CWE Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>933</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WASC Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>14</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Source ID</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>3</p>
+</font></td>
+</tr>
+
+</table>
+<p></p>
+<table width="100%" border="0">
+  
+  
+  
+<tr bgcolor="yellow" height="24">
+<a name="low"></a><td width="20%" valign="top"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Low (Medium)</font></strong></td><td width="80%"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Cookie No HttpOnly Flag</font></strong></td>
+</tr>
+  
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Description</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.</p></font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=1075773632&amp;menu=1000</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>unique2u</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Set-Cookie: unique2u</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=1212175692&amp;menu=1800</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WEAKID</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Set-Cookie: WEAKID</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/examples/servlets/servlet/CookieExample</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>POST</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>ZAP</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Set-Cookie: ZAP</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=68584332&amp;menu=900</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>unique2u</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Set-Cookie: unique2u</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/webgoat-container-7.1/attack?Screen=950261113&amp;menu=1800</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Parameter</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WEAKID</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Set-Cookie: WEAKID</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Instances</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>5</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Solution</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Ensure that the HttpOnly flag is set for all cookies.</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Reference</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>http://www.owasp.org/index.php/HttpOnly</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>CWE Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>16</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WASC Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>13</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Source ID</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>3</p>
+</font></td>
+</tr>
+
+</table>
+<p></p>
+<table width="100%" border="0">
+  
+  
+  
+<tr bgcolor="yellow" height="24">
+<a name="low"></a><td width="20%" valign="top"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Low (Medium)</font></strong></td><td width="80%"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Private IP Disclosure</font></strong></td>
+</tr>
+  
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Description</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>A private IP (such as 10.x.x.x, 172.x.x.x, 192.168.x.x) or an Amazon EC2 private hostname (for example, ip-10-0-56-78) has been found in the HTTP response body. This information might be helpful for further attacks targeting internal systems.</p></font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/config/filter.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>192.168.0.10</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/monitoring.html</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Evidence</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>192.168.1.75</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Instances</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>2</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Solution</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Remove the private IP address from the HTTP response body.  For comments, use JSP/ASP/PHP comment instead of HTML/JavaScript comment which can be seen by client browsers.</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Other information</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p><p>192.168.0.10</p><p>192.168.0.10</p><p>192.168.0.10</p><p>192.168.0.10</p><p>192.168.0.10</p><p>192.168.0.10</p><p>192.168.0.10</p><p></p></p>
+</font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Reference</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>https://tools.ietf.org/html/rfc1918</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>CWE Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>200</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WASC Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>13</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Source ID</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>3</p>
+</font></td>
+</tr>
+
+</table>
+<p></p>
+<table width="100%" border="0">
+  
+  
+  
+<tr bgcolor="yellow" height="24">
+<a name="low"></a><td width="20%" valign="top"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Low (Medium)</font></strong></td><td width="80%"><strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Content-Type Header Missing</font></strong></td>
+</tr>
+  
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Description</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>The Content-Type header was either missing or empty.</p></font></td>
+</tr>
+<TR vAlign="top">
+<TD colspan="2"></TD>
+</TR>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>URL</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>http://localhost:8080/docs/appdev/sample/sample.war</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%">
+<blockquote>
+<font size="2" face="Arial, Helvetica, sans-serif">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Method</p>
+</font>
+</blockquote>
+</td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>GET</p>
+</font></td>
+</tr>
+  
+  
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Instances</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>1</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Solution</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>Ensure each page is setting the specific and appropriate content-type value for the content being delivered.</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Reference</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif"><p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p></font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>CWE Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>345</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>WASC Id</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>12</p>
+</font></td>
+</tr>
+  
+<tr bgcolor="#e8e8e8" valign="top">
+<td width="20%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>Source ID</p>
+</font></td><td width="80%"><font size="2" face="Arial, Helvetica, sans-serif">
+<p>3</p>
+</font></td>
+</tr>
+
+</table>
+</body>
+</html>
